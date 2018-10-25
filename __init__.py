@@ -27,4 +27,14 @@ class Command:
         x, y, x1, y1 = carets[0]
         h = ed.get_prop(PROP_VISIBLE_LINES)
         
-        ed.set_prop(PROP_SCROLL_VERT, max(0, y-h//2) )
+        pos = max(0, y-h//2)
+        
+        if ed.get_prop(PROP_WRAP)!=0:
+            w = ed.get_wrapinfo()
+            for n in reversed(range(len(w))):
+                wi = w[n]
+                if wi['line']==y and wi['char']-1<=x:
+                    pos = max(0, n-h//2)
+                    break
+        
+        ed.set_prop(PROP_SCROLL_VERT, pos)
