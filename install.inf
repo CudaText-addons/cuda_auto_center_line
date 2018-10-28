@@ -4,6 +4,7 @@ desc=Plugin keeps current line in the center of the editor window
 type=cudatext-plugin
 subdir=cuda_auto_center_line
 homepage=https://github.com/CudaText-addons/cuda_auto_center_line
+api=1.0.262
 
 [item2]
 section=commands
