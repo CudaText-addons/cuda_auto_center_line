@@ -1,3 +1,6 @@
 
+2018.10.28
+- fix: handle mouse clicks/selection, don't do weird jumps
+
 2018.10.25
 initial
