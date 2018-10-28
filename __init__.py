@@ -19,14 +19,21 @@ class Command:
         msg_status('Auto Center Line deactivated')
 
     def on_caret(self, ed_self):
-
+    
         carets = ed.get_carets()
         if len(carets)!=1:
             return
             
         x, y, x1, y1 = carets[0]
-        h = ed.get_prop(PROP_VISIBLE_LINES)
+        if y1>=0:
+            return
         
+        # handle mouse selection
+        st = app_proc(PROC_GET_KEYSTATE, '')
+        if 'L' in st or 'R' in st:
+            return
+        
+        h = ed.get_prop(PROP_VISIBLE_LINES)
         pos = max(0, y-h//2)
         
         if ed.get_prop(PROP_WRAP)!=0:
