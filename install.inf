@@ -5,15 +5,10 @@ type=cudatext-plugin
 subdir=cuda_auto_center_line
 homepage=https://github.com/CudaText-addons/cuda_auto_center_line
 
-[item2]
+[item1]
 section=commands
-caption=Auto Center Line\Activate
-method=on
-
-[item3]
-section=commands
-caption=Auto Center Line\Deactivate
-method=off
+caption=Auto Center Line\Toggle active state
+method=toggle
 
 [item10]
 section=commands

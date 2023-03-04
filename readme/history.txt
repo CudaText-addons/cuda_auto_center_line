@@ -1,4 +1,5 @@
 2023.03.04
+* change: 2 commands "Activate"/"Deactivate" change to one "Toggle"
 + add: option "h" in plugins.ini file
 + add: command "Config" in the "Options / Settings-plugins" menu
 

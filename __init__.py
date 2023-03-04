@@ -8,6 +8,7 @@ def bool_to_str(v): return '1' if v else '0'
 def str_to_bool(s): return s=='1'
 
 class Command:
+    act = False
     h = 50
     
     def config(self):
@@ -15,16 +16,16 @@ class Command:
         ini_write(fn_config, SECTION, 'h', str(self.h))
         file_open(fn_config)
 
-    def on(self):
-    
-        self.h = int(ini_read(fn_config, SECTION, 'h', str(self.h)))
-        app_proc(PROC_SET_EVENTS, 'cuda_auto_center_line;on_caret;;')
-        msg_status('Auto Center Line activated')
-
-    def off(self):
-
-        app_proc(PROC_SET_EVENTS, 'cuda_auto_center_line;;;')
-        msg_status('Auto Center Line deactivated')
+    def toggle(self):
+        
+        self.act = not self.act
+        if self.act:
+            self.h = int(ini_read(fn_config, SECTION, 'h', str(self.h)))
+            app_proc(PROC_SET_EVENTS, 'cuda_auto_center_line;on_caret;;')
+            msg_status('Auto Center Line activated')
+        else:
+            app_proc(PROC_SET_EVENTS, 'cuda_auto_center_line;;;')
+            msg_status('Auto Center Line deactivated')
 
     def on_caret(self, ed_self):
     
