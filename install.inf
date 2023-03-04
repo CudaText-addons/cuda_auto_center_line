@@ -20,3 +20,4 @@ method=off
 section=commands
 caption=Auto Center Line\Config
 method=config
+menu=o
