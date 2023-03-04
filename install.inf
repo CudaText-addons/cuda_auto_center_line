@@ -15,3 +15,8 @@ method=on
 section=commands
 caption=Auto Center Line\Deactivate
 method=off
+
+[item10]
+section=commands
+caption=Auto Center Line\Config
+method=config
