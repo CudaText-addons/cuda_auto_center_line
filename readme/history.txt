@@ -1,6 +1,6 @@
 2023.03.04
 + add: option "h" in plugins.ini file
-+ add: command "Config" in then "Plugins / Auto Center Line" menu
++ add: command "Config" in then "Options / Settings-plugins" menu
 
 2018.10.28
 - fix: handle mouse clicks/selection, don't do weird jumps
