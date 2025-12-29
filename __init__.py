@@ -19,19 +19,21 @@ class Command:
         ini_write(fn_config, SECTION, 'h', str(self.h))
         file_open(fn_config)
         # Jump to section
-        lines = [line.strip() for line in ed.get_text_all().splitlines()]
-        ed.set_caret(0, lines.index('['+SECTION+']'))
+        lines = [ed.get_text_line(i) for i in range(ed.get_line_count())]
+        y = lines.index('['+SECTION+']')
+        if y>=0:
+            ed.set_caret(0, y)
 
     def toggle(self):
 
         self.act = not self.act
         if self.act:
             self.h = int(ini_read(fn_config, SECTION, 'h', str(self.h)))
-            app_proc(PROC_SET_EVENTS, 'cuda_auto_center_line;on_caret;;')
-            msg_status(_('Auto Center Line activated'))
+            app_proc(PROC_EVENTS_SUB, 'cuda_auto_center_line;on_caret;;')
+            msg_status(_('Auto Center Line: activated'))
         else:
-            app_proc(PROC_SET_EVENTS, 'cuda_auto_center_line;;;')
-            msg_status(_('Auto Center Line deactivated'))
+            app_proc(PROC_EVENTS_UNSUB, 'cuda_auto_center_line;on_caret;;')
+            msg_status(_('Auto Center Line: deactivated'))
 
     def on_caret(self, ed_self):
 
