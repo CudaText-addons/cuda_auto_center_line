@@ -62,4 +62,4 @@ class Command:
                     pos = max(0, n-h_delta)
                     break
 
-        ed.set_prop(PROP_SCROLL_VERT, pos)
+        ed.set_prop(PROP_SCROLL_VERT_INFO, {'pos': pos})
